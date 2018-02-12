@@ -66,47 +66,46 @@ $TokenComp = array();
 $TokenError = array();
 $TokenError2 = array();
 
-//tokenizador
+tokenizador
 
-// for($i = 0; $i<count($array);$i++){
-//
-// 	if(preg_match($ER_ID, $array[$i])){
-// 		$array2[$i] = 'ID';
-// 	}elseif(preg_match($ER_OP, $array[$i])){
-// 		$array2[$i] = 'OP';
-// 	}
-// 	elseif(preg_match($ER_NUM, $array[$i])){
-// 		$array2[$i] = 'NUM';
-// 	}elseif(preg_match($ER_DEL, $array[$i])){
-// 		$array2[$i] = 'DEL';
-// 	}elseif(preg_match($ER_ERROR_ID, $array[$i])){
-// 		$errores[] = "Error, Incorrecta Definicion de una variable";
-// 		$array2[$i] = 'ErrVar';
-// 	}else{
-// 		$array2[$i] = 'CAE';
-//
-// 	}
-// }
+//tokenizador - va a convertir los lexemas en tokens(ejemplo: $a + $b = $c -> ID OP ID OP ID)
+for($i = 0; $i<count($array);$i++){
 
-
-$asociativo = array('ID' => $ER_ID,
-                    'OP' => $ER_OP,
-                    'NUM' => $ED_NUM,
-                    'DEL' => $ER_DEL,
-                    'ErrVar' => $ER_ERROR_ID,
-                    'CAE' => $ER_ID2);
-
-for ($i=0; $i < count($array) ; $i++) {
-  foreach($asociativo as $key => $ERG){
-    if(preg_match($ERG, $array[$i])){
-      $array2[$i]=$key;
-    }
-  }
+	if(preg_match($ER_ID, $array[$i])){
+		$array2[$i] = 'ID';
+	}elseif(preg_match($ER_OP, $array[$i])){
+		$array2[$i] = 'OP';
+	}
+	elseif(preg_match($ER_NUM, $array[$i])){
+		$array2[$i] = 'NUM';
+	}elseif(preg_match($ER_DEL, $array[$i])){
+		$array2[$i] = 'DEL';
+	}elseif(preg_match($ER_ERROR_ID, $array[$i])){
+		$errores[] = "Error, Incorrecta Definicion de una variable";
+		$array2[$i] = 'ErrVar';
+	}else{
+		$array2[$i] = 'CAE';
+	}
 }
 
+echo implode(' ',$array);
+echo "<br><br>";
+echo implode(' ', $array2);
 
-
-print_r($array2);
+// $asociativo = array('ID' => $ER_ID,
+//                     'OP' => $ER_OP,
+//                     'NUM' => $ED_NUM,
+//                     'DEL' => $ER_DEL,
+//                     'ErrVar' => $ER_ERROR_ID,
+//                     'CAE' => $ER_ID2);
+//
+// for ($i=0; $i < count($array) ; $i++) {
+//   foreach($asociativo as $key => $ERG){
+//     if(preg_match($ERG, $array[$i])){
+//       $array2[$i]=$key;
+//     }
+//   }
+// }
 
 
 ?>
